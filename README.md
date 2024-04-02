@@ -23,7 +23,6 @@
 - has_many :items
 - has_many :comments
 - has_many :orders
-- has_one :address
 
 ### 説明
 
@@ -47,8 +46,8 @@
 | shipping_payer_id | integer    | null: false                    |
 | shipping_from_id  | integer    | null: false                    |
 | shipping_days_id  | integer    | null: false                    |
-| price             | decimal    | null: false                    |
-| user_id           | references | null: false, foreign_key: true |
+| price             | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -60,7 +59,7 @@
 
 - 商品情報を管理します。商品名、説明、カテゴリID、状態、配送料の負担者、発送元地域、発送までの日数、価格を格納します。
 - `category_id`, `condition_id`, `shipping_payer_id`, `shipping_from_id`, `shipping_days_id` はactive_hashを使用して管理します。これらのカラムはid値（数値）を保存し、別途active_hashで定義されたモデルから具体的なデータを参照します。
-- `user_id` は出品者のユーザーIDを示し、関連するユーザーテーブルへの外部キーです。
+- `user` は出品者のユーザーIDを示し、関連するユーザーテーブルへの外部キーです。
 
 ## addresses テーブル
 
@@ -72,7 +71,7 @@
 | street_address | string     | null: false                    |
 | building_name  | string     |                                |
 | phone_number   | string     | null: false                    |
-| order_id       | references | null: false, foreign_key: true |
+| order          | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -86,14 +85,14 @@
 - `street_address`: 番地。文字列型を使用します。
 - `building_name`: 建物名。任意で入力可能なため、null制約はありません。
 - `phone_number`: 電話番号。文字列型を使用します。
-- `order_id`: 注文の外部キー。`addresses` テーブルが特定の注文に対する配送先住所を提供するために使用します。
+- `order`: 注文の外部キー。`addresses` テーブルが特定の注文に対する配送先住所を提供するために使用します。
 
 ## orders テーブル
 
 | Column     | Type       | Options                        |
 |------------|------------|--------------------------------|
-| user_id    | references | null: false, foreign_key: true |
-| item_id    | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -104,7 +103,7 @@
 
 | Column         | Type       | Options                       |
 |----------------|------------|-------------------------------|
-| order_id       | references | null: false, foreign_key: true|
+| order          | references | null: false, foreign_key: true|
 | amount         | decimal    | null: false                   |
 | status         | string     | null: false                   |
 | payment_method | string     | null: false                   |
@@ -122,8 +121,8 @@
 | Column     | Type       | Options                       |
 |------------|------------|-------------------------------|
 | content    | text       | null: false                   |
-| user_id    | references | null: false, foreign_key: true|
-| item_id    | references | null: false, foreign_key: true|
+| user       | references | null: false, foreign_key: true|
+| item       | references | null: false, foreign_key: true|
 
 ### Association
 
