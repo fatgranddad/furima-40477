@@ -1,24 +1,22 @@
 # データベース設計
 
-このアプリケーションでは、画像のアップロードと管理にはRailsのActive Storageを使用します。Active Storageのセットアップには、`rails active_storage:install`コマンドを実行し、生成されるマイグレーションを適用することで、必要なテーブルが作成されます。商品画像は`items`テーブルと関連付けられ、画像へのアクセスはActive Storageを通じて行われます。
-
-## 概要
-
-- Active Storageを使用して、商品に関連する画像ファイルを管理します。
-- 画像のアタッチメントとアクセスは`has_one_attached`や`has_many_attached`マクロを使用してモデルに統合されます。
+このアプリケーションでは、画像のアップロードと管理にはRailsのActive Storageを使用します。
+このアプリケーションでは、静的なデータ（例：商品カテゴリー、都道府県情報、商品の状態）の管理にActive Hashを使用します。`category_id`, `condition_id`, `shipping_payer_id`, `shipping_from_id`, `shipping_days_id` などのカラムは、Active Hashを使用して管理されます。
 
 以下は、本アプリケーションで使用される主要なテーブルとそのカラムのリストです。
 
 ## users テーブル
 
-| Column                 | Type     | Options                   |
-|------------------------|----------|---------------------------|
-| nickname               | string   | null: false               |
-| email                  | string   | null: false, default: ""  |
-| encrypted_password     | string   | null: false, default: ""  |
-| full_name              | string   | null: false               |
-| full_name_kana         | string   | null: false               |
-| birth_date             | date     | null: false               |
+| Column                  | Type   | Options                        |
+|-------------------------|--------|--------------------------------|
+| nickname                | string | null: false                    |
+| email                   | string | null: false, unique: true      |
+| encrypted_password      | string | null: false                    |
+| last_name               | string | null: false                    |
+| first_name              | string | null: false                    |
+| last_name_kana          | string | null: false                    |
+| first_name_kana         | string | null: false                    |
+| birth_date              | date   | null: false                    |
 
 ### Association
 
@@ -29,21 +27,28 @@
 
 ### 説明
 
-- Deviseによるユーザー認証情報とともに、ユーザーの個人情報を格納します。メールアドレス、暗号化されたパスワード、パスワードリセットに関する情報、ログイン追跡情報、および追加のユーザー情報を含みます。
+- `nickname`: ユーザーがアプリケーション内で使用するユーザー名です。
+- `email`: ユーザーのメールアドレスで、ログインに使用されます。各メールアドレスは一意でなければならないという制約があります。
+- `encrypted_password`: Deviseにより暗号化されたユーザーのパスワードです。
+- `last_name`: ユーザーの姓です。
+- `first_name`: ユーザーの名です。
+- `last_name_kana`: ユーザーの姓のフリガナです。
+- `first_name_kana`: ユーザーの名のフリガナです。
+- `birth_date`: ユーザーの生年月日です。
 
 ## items テーブル
 
-| Column           | Type       | Options                       |
-|------------------|------------|-------------------------------|
-| name             | string     | null: false                   |
-| description      | text       | null: false                   |
-| category_id      | references | null: false, foreign_key: true|
-| condition        | string     | null: false                   |
-| shipping_payer   | string     | null: false                   |
-| shipping_from    | string     | null: false                   |
-| shipping_days    | string     | null: false                   |
-| price            | decimal    | null: false                   |
-| seller_user_id   | references | null: false, foreign_key: true|
+| Column            | Type       | Options                        |
+|-------------------|------------|--------------------------------|
+| name              | string     | null: false                    |
+| description       | text       | null: false                    |
+| category_id       | integer    | null: false, foreign_key: true |
+| condition_id      | integer    | null: false                    |
+| shipping_payer_id | integer    | null: false                    |
+| shipping_from_id  | integer    | null: false                    |
+| shipping_days_id  | integer    | null: false                    |
+| price             | decimal    | null: false                    |
+| user_id           | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -53,46 +58,47 @@
 
 ### 説明
 
-- 商品情報を管理します。商品名、説明、カテゴリID、状態、配送料の負担者、発送元地域、発送までの日数、価格を格納します。`seller_user_id`は出品者のユーザーIDを示し、関連するユーザーテーブルへの外部キーです。
+- 商品情報を管理します。商品名、説明、カテゴリID、状態、配送料の負担者、発送元地域、発送までの日数、価格を格納します。
+- `category_id`, `condition_id`, `shipping_payer_id`, `shipping_from_id`, `shipping_days_id` はactive_hashを使用して管理します。これらのカラムはid値（数値）を保存し、別途active_hashで定義されたモデルから具体的なデータを参照します。
+- `user_id` は出品者のユーザーIDを示し、関連するユーザーテーブルへの外部キーです。
 
 ## addresses テーブル
 
-| Column          | Type    | Options                       |
-|-----------------|---------|-------------------------------|
-| postal_code     | string  | null: false                   |
-| prefecture      | string  | null: false                   |
-| city            | string  | null: false                   |
-| street_address  | string  | null: false                   |
-| building_name   | string  |                               |
-| phone_number    | string  | null: false                   |
-| user_id         | references | null: false, foreign_key: true|
+| Column         | Type       | Options                        |
+|----------------|------------|--------------------------------|
+| postal_code    | string     | null: false                    |
+| prefecture_id  | integer    | null: false                    |
+| city           | string     | null: false                    |
+| street_address | string     | null: false                    |
+| building_name  | string     |                                |
+| phone_number   | string     | null: false                    |
+| order_id       | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user, ユーザーに対する参照。
+- belongs_to :order
 
 ### 説明
 
-- ユーザーの配送先住所を管理します。郵便番号、都道府県、市区町村、番地、建物名、電話番号を格納します。`user_id`は関連するユーザーを指し、ユーザーテーブルへの外部キーです。
+- `postal_code`: 郵便番号。文字列型を使用します。
+- `prefecture_id`: 都道府県。active_hashを使用し、integer型でid値を保存します。
+- `city`: 市区町村。文字列型を使用します。
+- `street_address`: 番地。文字列型を使用します。
+- `building_name`: 建物名。任意で入力可能なため、null制約はありません。
+- `phone_number`: 電話番号。文字列型を使用します。
+- `order_id`: 注文の外部キー。`addresses` テーブルが特定の注文に対する配送先住所を提供するために使用します。
 
 ## orders テーブル
 
-| Column         | Type       | Options                       |
-|----------------|------------|-------------------------------|
-| buyer_user_id  | references | null: false, foreign_key: true|
-| item_id        | references | null: false, foreign_key: true|
-| address_id     | references | null: false, foreign_key: true|
-| status         | string     | null: false                   |
+| Column     | Type       | Options                        |
+|------------|------------|--------------------------------|
+| user_id    | references | null: false, foreign_key: true |
+| item_id    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user, ユーザー（購入者）に対する参照。
-- belongs_to :item, 商品に対する参照。
-- belongs_to :address, 配送先住所に対する参照。
-
-### 説明
-
-- 注文情報を管理します。購入者（ユーザー）ID、商品ID、配送先住所ID、および注文ステータス（例：支払い待ち、発送待ちなど）を格納します。各IDは対応するテーブルへの外部キーとして機能します。
+- belongs_to :user
+- belongs_to :item
 
 ## payments テーブル
 
@@ -127,17 +133,3 @@
 ### 説明
 
 - 商品に対するコメントを管理します。コメント内容、コメントを投稿したユーザーのID、コメントが投稿された商品のIDを格納します。これにより、商品に対するフィードバックや質問をサポートします。
-
-## categories テーブル
-
-| Column       | Type    | Options     |
-|--------------|---------|-------------|
-| name         | string  | null: false |
-
-### Association
-
-- has_many :items, このカテゴリに属する商品に対する参照。
-
-### 説明
-
-- 商品カテゴリを管理します。各カテゴリにはユニークな名前があり、商品テーブルの`category_id`と関連付けられています。
