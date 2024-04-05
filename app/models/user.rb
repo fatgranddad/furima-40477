@@ -9,29 +9,24 @@ class User < ApplicationRecord
   validates :nickname, presence: true
 
   # メールアドレスは必須であり一意である。また、@を含む形式であること
-  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence: true, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
 
   # パスワードは必須であり、6文字以上の長さと、半角英数字混合であること
-  validates :password, presence: true, length: { minimum: 6 }, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
+  validates :password, presence: true
+  validates :password, length: { minimum: 6 }, allow_blank: true
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }, allow_blank: true
 
   # パスワード（確認用）も作成時に必須
   validates :password_confirmation, presence: true, on: :create
 
-  # パスワードとパスワード（確認用）の値が一致することを検証
-  validate :password_match
+  validates :last_name, :first_name, presence: true
+  validates :last_name, :first_name, format: { with: /\A[一-龠々ぁ-んァ-ンー]+\z/, message: 'must be entered in full-width characters' }, allow_blank: true
 
-  validates :last_name, :first_name, presence: true, format: { with: /\A[一-龠々ぁ-んァ-ンー]+\z/, message: 'must be entered in full-width characters' }
-  validates :last_name_kana, :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'must be entered in full-width katakana characters' }
+  validates :last_name_kana, :first_name_kana, presence: true
+  validates :last_name_kana, :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'must be entered in full-width katakana characters' }, allow_blank: true
+
   validates :birth_date, presence: true
-
-  private
-
-  def password_match
-    return if password == password_confirmation
-
-    # パスワードが一致しない場合はエラーメッセージを追加
-    errors.add(:password_confirmation, "doesn't match Password")
-  end
 
   has_many :items
   has_many :comments
