@@ -20,8 +20,8 @@ class User < ApplicationRecord
   # パスワードとパスワード（確認用）の値が一致することを検証
   validate :password_match
 
-  validates :last_name, :first_name, presence: true, format: { with: /\A[一-龠々ぁ-んァ-ンー]+\z/, message: 'は全角文字で入力してください' }
-  validates :last_name_kana, :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角カタカナで入力してください' }
+  validates :last_name, :first_name, presence: true, format: { with: /\A[一-龠々ぁ-んァ-ンー]+\z/, message: 'must be entered in full-width characters' }
+  validates :last_name_kana, :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'must be entered in full-width katakana characters' }
   validates :birth_date, presence: true
 
   private
