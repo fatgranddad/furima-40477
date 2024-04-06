@@ -12,6 +12,15 @@ class User < ApplicationRecord
 
   validates :birth_date, presence: true
 
+  # パスワードが半角英数字混合であることを検証
+  validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: 'must be a mix of letters and numbers' }, if: :password_required?
+
+  private
+
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
+  end
+
   has_many :items
   has_many :comments
   has_many :orders
