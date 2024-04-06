@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
-
     context '新規登録ができる場合' do
       it '全ての値が正しく入力されていれば登録できる' do
         expect(@user).to be_valid
@@ -29,13 +28,13 @@ RSpec.describe User, type: :model do
       it 'メールアドレスが一意性であること' do
         FactoryBot.create(:user, email: @user.email)
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email has already been taken")
+        expect(@user.errors.full_messages).to include('Email has already been taken')
       end
 
       it 'メールアドレスは、@を含む必要があること' do
         @user.email = 'userexample.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
       it 'パスワードが必須であること' do
@@ -49,15 +48,15 @@ RSpec.describe User, type: :model do
         @user.password = 'a1' * 2
         @user.password_confirmation = 'a1' * 2
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
 
       it 'パスワードは、半角英数字混合での入力が必須であること' do
         @user.password = 'aaaaaa'
         @user.password_confirmation = 'aaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password must be a mix of letters and numbers")
-      end    
+        expect(@user.errors.full_messages).to include('Password must be a mix of letters and numbers')
+      end
 
       it 'パスワードとパスワード（確認）は、値の一致が必須であること' do
         @user.password = 'abc123'
@@ -77,7 +76,8 @@ RSpec.describe User, type: :model do
         @user.last_name = 'tanaka'
         @user.first_name = 'taro'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name must be entered in full-width characters", "First name must be entered in full-width characters")
+        expect(@user.errors.full_messages).to include('Last name must be entered in full-width characters',
+                                                      'First name must be entered in full-width characters')
       end
 
       it 'お名前カナ(全角)は、名字と名前がそれぞれ必須であること' do
@@ -91,7 +91,8 @@ RSpec.describe User, type: :model do
         @user.last_name_kana = 'たなか'
         @user.first_name_kana = 'たろう'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name kana must be entered in full-width katakana characters", "First name kana must be entered in full-width katakana characters")
+        expect(@user.errors.full_messages).to include('Last name kana must be entered in full-width katakana characters',
+                                                      'First name kana must be entered in full-width katakana characters')
       end
 
       it '生年月日が必須であること' do
