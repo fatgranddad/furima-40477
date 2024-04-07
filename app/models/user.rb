@@ -24,7 +24,7 @@ class User < ApplicationRecord
     !persisted? || !password.nil? || !password_confirmation.nil?
   end
 
-  has_many :items
-  has_many :comments
-  has_many :orders
+  # has_many :items
+  # has_many :comments
+  # has_many :orders
 end
