@@ -15,6 +15,8 @@ function calculateAndDisplayFees() {
 // ページ読み込み時とフレーム読み込み時に計算を実行
 document.addEventListener('turbo:load', calculateAndDisplayFees);
 document.addEventListener('turbo:frame-load', calculateAndDisplayFees);
+// turbo:render イベントリスナーを追加
+document.addEventListener('turbo:render', calculateAndDisplayFees);
 
 // フォーム送信後のイベントリスナーを追加
 document.addEventListener('turbo:submit-end', calculateAndDisplayFees);
