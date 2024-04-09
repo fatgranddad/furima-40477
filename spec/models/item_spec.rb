@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @user = FactoryBot.create(:user)  # 明示的にユーザーを生成
-    @item = FactoryBot.build(:item, user: @user)  # 生成したユーザーをアイテムに関連付ける
+    @user = FactoryBot.create(:user) # 明示的にユーザーを生成
+    @item = FactoryBot.build(:item, user: @user) # 生成したユーザーをアイテムに関連付ける
   end
 
   describe '商品出品' do
@@ -89,7 +89,7 @@ RSpec.describe Item, type: :model do
       it 'userが紐付いていなければ出品できない' do
         @item.user_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
