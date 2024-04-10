@@ -32,7 +32,7 @@
 
     <%# ログインしているユーザーと出品しているユーザーが、同一でなければ、購入ボタンを表示 %>
     <% if user_signed_in? && current_user.id != @item.user_id %>
-      <%= link_to "購入画面に進む", "#", id: "charge-form", class:"item-red-btn"%>
+      <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
     <% end %>
 
     <div class="item-explain-box">
