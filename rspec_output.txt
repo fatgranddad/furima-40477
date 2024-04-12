@@ -1,0 +1,407 @@
+
+PurchaseForm
+  商品購入
+    商品購入がうまくいくとき
+      すべての値が正しく入力されていれば購入できる
+      建物名は任意であること
+    商品購入がうまくいかないとき
+      郵便番号が空だと購入できない
+      郵便番号は、「3桁ハイフン4桁」の半角文字列のみで入力しなければ、購入できない
+      都道府県が必須であること
+      市区町村が空だと購入できない (FAILED - 1)
+      番地が空だと購入できない (FAILED - 2)
+      電話番号が空だと購入できない (FAILED - 3)
+      電話番号は、10桁以上11桁以内の半角数値のみ保存可能なこと (FAILED - 4)
+
+Failures:
+
+  1) PurchaseForm 商品購入 商品購入がうまくいかないとき 市区町村が空だと購入できない
+     Failure/Error: _query(sql, @query_options.merge(options))
+
+     ActiveRecord::ConnectionNotEstablished:
+       MySQL client is not connected
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `_query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `block in query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:150:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:150:in `query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:638:in `block (2 levels) in raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:637:in `block in raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_adapter.rb:752:in `block in log'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_adapter.rb:743:in `log'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:636:in `raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/mysql/database_statements.rb:96:in `raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/mysql/database_statements.rb:47:in `execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:206:in `begin_db_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:207:in `materialize!'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:258:in `block in begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:234:in `begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/database_statements.rb:324:in `begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:132:in `block in setup_fixtures'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:131:in `each'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:131:in `setup_fixtures'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:10:in `before_setup'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-rails-4.0.2/lib/rspec/rails/adapters.rb:74:in `block (2 levels) in <module:MinitestLifecycleAdapter>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:457:in `instance_exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:457:in `instance_exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:390:in `execute_with'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:628:in `block (2 levels) in run_around_example_hooks_for'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:352:in `call'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:629:in `run_around_example_hooks_for'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:486:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:468:in `with_around_example_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:511:in `with_around_and_singleton_context_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:259:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:646:in `block in run_examples'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:642:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:642:in `run_examples'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:607:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `block in run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `block in run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `block (3 levels) in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `block (2 levels) in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/configuration.rb:2091:in `with_suite_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:116:in `block in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/reporter.rb:74:in `report'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:115:in `run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:89:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:71:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:45:in `invoke'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/exe/rspec:4:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/rspec:25:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/rspec:25:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:58:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:58:in `kernel_load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:23:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:491:in `exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:34:in `dispatch'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:28:in `start'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/exe/bundle:45:in `block in <top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/exe/bundle:33:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/bundle:25:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/bundle:25:in `<main>'
+     # 
+     #   Showing full backtrace because every line was filtered out.
+     #   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+     #   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+     # ------------------
+     # --- Caused by: ---
+     # Mysql2::Error:
+     #   MySQL client is not connected
+     #   /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `_query'
+
+  2) PurchaseForm 商品購入 商品購入がうまくいかないとき 番地が空だと購入できない
+     Failure/Error: _query(sql, @query_options.merge(options))
+
+     ActiveRecord::ConnectionNotEstablished:
+       MySQL client is not connected
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `_query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `block in query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:150:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:150:in `query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:638:in `block (2 levels) in raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:637:in `block in raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_adapter.rb:752:in `block in log'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_adapter.rb:743:in `log'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:636:in `raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/mysql/database_statements.rb:96:in `raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/mysql/database_statements.rb:47:in `execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:206:in `begin_db_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:207:in `materialize!'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:258:in `block in begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:234:in `begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/database_statements.rb:324:in `begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:132:in `block in setup_fixtures'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:131:in `each'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:131:in `setup_fixtures'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:10:in `before_setup'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-rails-4.0.2/lib/rspec/rails/adapters.rb:74:in `block (2 levels) in <module:MinitestLifecycleAdapter>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:457:in `instance_exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:457:in `instance_exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:390:in `execute_with'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:628:in `block (2 levels) in run_around_example_hooks_for'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:352:in `call'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:629:in `run_around_example_hooks_for'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:486:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:468:in `with_around_example_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:511:in `with_around_and_singleton_context_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:259:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:646:in `block in run_examples'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:642:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:642:in `run_examples'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:607:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `block in run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `block in run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `block (3 levels) in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `block (2 levels) in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/configuration.rb:2091:in `with_suite_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:116:in `block in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/reporter.rb:74:in `report'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:115:in `run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:89:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:71:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:45:in `invoke'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/exe/rspec:4:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/rspec:25:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/rspec:25:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:58:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:58:in `kernel_load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:23:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:491:in `exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:34:in `dispatch'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:28:in `start'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/exe/bundle:45:in `block in <top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/exe/bundle:33:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/bundle:25:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/bundle:25:in `<main>'
+     # 
+     #   Showing full backtrace because every line was filtered out.
+     #   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+     #   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+     # ------------------
+     # --- Caused by: ---
+     # Mysql2::Error:
+     #   MySQL client is not connected
+     #   /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `_query'
+
+  3) PurchaseForm 商品購入 商品購入がうまくいかないとき 電話番号が空だと購入できない
+     Failure/Error: _query(sql, @query_options.merge(options))
+
+     ActiveRecord::ConnectionNotEstablished:
+       MySQL client is not connected
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `_query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `block in query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:150:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:150:in `query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:638:in `block (2 levels) in raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:637:in `block in raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_adapter.rb:752:in `block in log'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_adapter.rb:743:in `log'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:636:in `raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/mysql/database_statements.rb:96:in `raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/mysql/database_statements.rb:47:in `execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:206:in `begin_db_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:207:in `materialize!'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:258:in `block in begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:234:in `begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/database_statements.rb:324:in `begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:132:in `block in setup_fixtures'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:131:in `each'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:131:in `setup_fixtures'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:10:in `before_setup'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-rails-4.0.2/lib/rspec/rails/adapters.rb:74:in `block (2 levels) in <module:MinitestLifecycleAdapter>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:457:in `instance_exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:457:in `instance_exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:390:in `execute_with'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:628:in `block (2 levels) in run_around_example_hooks_for'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:352:in `call'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:629:in `run_around_example_hooks_for'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:486:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:468:in `with_around_example_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:511:in `with_around_and_singleton_context_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:259:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:646:in `block in run_examples'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:642:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:642:in `run_examples'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:607:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `block in run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `block in run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `block (3 levels) in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `block (2 levels) in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/configuration.rb:2091:in `with_suite_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:116:in `block in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/reporter.rb:74:in `report'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:115:in `run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:89:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:71:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:45:in `invoke'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/exe/rspec:4:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/rspec:25:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/rspec:25:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:58:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:58:in `kernel_load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:23:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:491:in `exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:34:in `dispatch'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:28:in `start'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/exe/bundle:45:in `block in <top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/exe/bundle:33:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/bundle:25:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/bundle:25:in `<main>'
+     # 
+     #   Showing full backtrace because every line was filtered out.
+     #   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+     #   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+     # ------------------
+     # --- Caused by: ---
+     # Mysql2::Error:
+     #   MySQL client is not connected
+     #   /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `_query'
+
+  4) PurchaseForm 商品購入 商品購入がうまくいかないとき 電話番号は、10桁以上11桁以内の半角数値のみ保存可能なこと
+     Failure/Error: _query(sql, @query_options.merge(options))
+
+     ActiveRecord::ConnectionNotEstablished:
+       MySQL client is not connected
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `_query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `block in query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:150:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:150:in `query'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:638:in `block (2 levels) in raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/dependencies/interlock.rb:41:in `permit_concurrent_loads'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:637:in `block in raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_adapter.rb:752:in `block in log'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_adapter.rb:743:in `log'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:636:in `raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/mysql/database_statements.rb:96:in `raw_execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/mysql/database_statements.rb:47:in `execute'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:206:in `begin_db_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:207:in `materialize!'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:258:in `block in begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activesupport-7.0.8.1/lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/transaction.rb:234:in `begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/connection_adapters/abstract/database_statements.rb:324:in `begin_transaction'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:132:in `block in setup_fixtures'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:131:in `each'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:131:in `setup_fixtures'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/activerecord-7.0.8.1/lib/active_record/test_fixtures.rb:10:in `before_setup'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-rails-4.0.2/lib/rspec/rails/adapters.rb:74:in `block (2 levels) in <module:MinitestLifecycleAdapter>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:457:in `instance_exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:457:in `instance_exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:390:in `execute_with'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:628:in `block (2 levels) in run_around_example_hooks_for'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:352:in `call'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:629:in `run_around_example_hooks_for'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/hooks.rb:486:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:468:in `with_around_example_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:511:in `with_around_and_singleton_context_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example.rb:259:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:646:in `block in run_examples'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:642:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:642:in `run_examples'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:607:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `block in run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `block in run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/example_group.rb:608:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `block (3 levels) in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `map'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:121:in `block (2 levels) in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/configuration.rb:2091:in `with_suite_hooks'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:116:in `block in run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/reporter.rb:74:in `report'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:115:in `run_specs'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:89:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:71:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/lib/rspec/core/runner.rb:45:in `invoke'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/rspec-core-3.13.0/exe/rspec:4:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/rspec:25:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/rspec:25:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:58:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:58:in `kernel_load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli/exec.rb:23:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:491:in `exec'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:34:in `dispatch'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/cli.rb:28:in `start'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/exe/bundle:45:in `block in <top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/bundler-2.4.1/exe/bundle:33:in `<top (required)>'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/bundle:25:in `load'
+     # /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/bin/bundle:25:in `<main>'
+     # 
+     #   Showing full backtrace because every line was filtered out.
+     #   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+     #   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+     # ------------------
+     # --- Caused by: ---
+     # Mysql2::Error:
+     #   MySQL client is not connected
+     #   /Users/yamashitatsuyoshi/.rbenv/versions/3.2.0/lib/ruby/gems/3.2.0/gems/mysql2-0.5.6/lib/mysql2/client.rb:151:in `_query'
+
+Finished in 0.42845 seconds (files took 1.08 seconds to load)
+9 examples, 4 failures
+
+Failed examples:
+
+rspec ./spec/models/purchase_form_spec.rb:33 # PurchaseForm 商品購入 商品購入がうまくいかないとき 市区町村が空だと購入できない
+rspec ./spec/models/purchase_form_spec.rb:36 # PurchaseForm 商品購入 商品購入がうまくいかないとき 番地が空だと購入できない
+rspec ./spec/models/purchase_form_spec.rb:39 # PurchaseForm 商品購入 商品購入がうまくいかないとき 電話番号が空だと購入できない
+rspec ./spec/models/purchase_form_spec.rb:42 # PurchaseForm 商品購入 商品購入がうまくいかないとき 電話番号は、10桁以上11桁以内の半角数値のみ保存可能なこと
+
