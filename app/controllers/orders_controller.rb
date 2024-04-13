@@ -26,7 +26,9 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
-    redirect_to items_path if @item.nil? || @item.sold
+    if @item.nil? || @item.sold || @item.user_id == current_user.id
+      redirect_to root_path, alert: "アクセスできません。"
+    end
   end
 
   def purchase_form_params
