@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
-    redirect_to items_path if @item.nil?
+    redirect_to items_path if @item.nil? || @item.sold
   end
 
   def purchase_form_params
@@ -48,7 +48,8 @@ class OrdersController < ApplicationController
 
   def process_payment
     if @purchase_form.save
-      redirect_to root_path
+      update_item_sold_status  # 商品の `sold` フラグを更新
+      redirect_to root_path, notice: '商品の購入が完了しました。'
     else
       render :index
     end
@@ -58,5 +59,9 @@ class OrdersController < ApplicationController
     message = "決済が完了できませんでした。カード情報を再度確認してください。"
     @purchase_form.errors.add(:card_token, message)
     render :index
+  end
+
+  def update_item_sold_status
+    @item.update!(sold: true)
   end
 end

@@ -20,6 +20,7 @@ class Item < ApplicationRecord
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :image, presence: true
+  validates :sold, inclusion: { in: [true, false] } # soldカラムのバリデーション追加
 
   has_one_attached :image
   belongs_to :user

@@ -136,9 +136,11 @@
             <%= image_tag item.image.variant(resize_to_limit: [100, 100]), class: "item-img" if item.image.attached? %>
 
             <%# 商品が売れていればsold outを表示しましょう %>
-            <%# <div class='sold-out'>
+            <% if item.sold %>
+            <div class='sold-out'>
               <span>Sold Out!!</span>
-            </div> %>
+            </div>
+            <% end %>
             <%# //商品が売れていればsold outを表示しましょう %>
 
           </div>
