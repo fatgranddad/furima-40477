@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item
 
   def index
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     @purchase_form = PurchaseForm.new
   end
 
@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
         handle_payment_failure
       end
     else
-      gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
       render :index
     end
   end
@@ -27,18 +27,19 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
-    if @item.nil? || @item.sold || @item.user_id == current_user.id
-      redirect_to root_path, alert: "アクセスできません。"
-    end
+    return unless @item.nil? || @item.sold || @item.user_id == current_user.id
+
+    redirect_to root_path, alert: 'アクセスできません。'
   end
 
   def purchase_form_params
     defaults = { user_id: current_user.id, item_id: @item.id }
-    params.require(:purchase_form).permit(:postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number, :card_token).reverse_merge(defaults)
+    params.require(:purchase_form).permit(:postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number,
+                                          :card_token).reverse_merge(defaults)
   end
 
   def create_charge
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: purchase_form_params[:card_token],
@@ -51,7 +52,7 @@ class OrdersController < ApplicationController
 
   def process_payment
     if @purchase_form.save
-      update_item_sold_status  # 商品の `sold` フラグを更新
+      update_item_sold_status # 商品の `sold` フラグを更新
       redirect_to root_path, notice: '商品の購入が完了しました。'
     else
       render :index
@@ -59,7 +60,7 @@ class OrdersController < ApplicationController
   end
 
   def handle_payment_failure
-    message = "決済が完了できませんでした。カード情報を再度確認してください。"
+    message = '決済が完了できませんでした。カード情報を再度確認してください。'
     @purchase_form.errors.add(:card_token, message)
     render :index
   end

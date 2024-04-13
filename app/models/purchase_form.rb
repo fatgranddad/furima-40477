@@ -1,6 +1,7 @@
 class PurchaseForm
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number, :card_token
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number,
+                :card_token
 
   validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/ } # 郵便番号は、「123-4567」の形式に一致する必要があります（3桁の数字、ハイフン、4桁の数字）。
   validates :prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
@@ -11,17 +12,17 @@ class PurchaseForm
 
   def save
     return false unless valid?
-  
+
     ActiveRecord::Base.transaction do
-      order = Order.create!(user_id: user_id, item_id: item_id)
+      order = Order.create!(user_id:, item_id:)
       Address.create!(
         order_id: order.id,
-        postal_code: postal_code,
-        prefecture_id: prefecture_id,
-        city: city,
-        street_address: street_address,
-        building_name: building_name,
-        phone_number: phone_number
+        postal_code:,
+        prefecture_id:,
+        city:,
+        street_address:,
+        building_name:,
+        phone_number:
       )
     end
     true
