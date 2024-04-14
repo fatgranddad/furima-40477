@@ -69,6 +69,24 @@ RSpec.describe PurchaseForm, type: :model do
         expect(@purchase_form.errors.full_messages).to include('Phone number is invalid')
       end
 
+      it '電話番号に半角数値以外の文字が含まれると購入できない' do
+        @purchase_form.phone_number = '090-1234-5678'
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid')
+      end
+
+      it '購入者（user_id）が空だと購入できない' do
+        @purchase_form.user_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("User can't be blank")
+      end
+      
+      it '商品（item_id）が空だと購入できない' do
+        @purchase_form.item_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("Item can't be blank")
+      end
+
       it 'カードトークンが空だと購入できない' do
         @purchase_form.card_token = ''
         @purchase_form.valid?
