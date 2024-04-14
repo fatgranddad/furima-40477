@@ -135,11 +135,12 @@
           <div class='item-img-content'>
             <%= image_tag item.image.variant(resize_to_limit: [100, 100]), class: "item-img" if item.image.attached? %>
 
-            <%# 商品が売れていればsold outを表示しましょう %>
-            <%# <div class='sold-out'>
+            <%# 商品が売れていればsold outを表示 %>
+            <% if item.order.present? %>
+            <div class='sold-out'>
               <span>Sold Out!!</span>
-            </div> %>
-            <%# //商品が売れていればsold outを表示しましょう %>
+            </div>
+            <% end %>
 
           </div>
           <div class='item-info'>
