@@ -33,7 +33,8 @@ class OrdersController < ApplicationController
 
   def purchase_form_params
     defaults = { user_id: current_user.id, item_id: @item.id }
-    params.require(:purchase_form).permit(:postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number, :card_token).reverse_merge(defaults)
+    params.require(:purchase_form).permit(:postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number,
+                                          :card_token).reverse_merge(defaults)
   end
 
   def create_charge
@@ -62,5 +63,4 @@ class OrdersController < ApplicationController
     @purchase_form.errors.add(:card_token, message)
     render :index
   end
-
 end
