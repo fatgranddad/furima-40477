@@ -27,15 +27,13 @@ class OrdersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
-    return unless @item.nil? || @item.sold || @item.user_id == current_user.id
-
-    redirect_to root_path, alert: 'アクセスできません。'
+    # Itemが存在しない、すでにOrderが存在する、またはItemが自分自身のものの場合はアクセス禁止
+    redirect_to root_path, alert: 'アクセスできません。' if @item.nil? || @item.order || @item.user_id == current_user.id
   end
 
   def purchase_form_params
     defaults = { user_id: current_user.id, item_id: @item.id }
-    params.require(:purchase_form).permit(:postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number,
-                                          :card_token).reverse_merge(defaults)
+    params.require(:purchase_form).permit(:postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number, :card_token).reverse_merge(defaults)
   end
 
   def create_charge
@@ -52,7 +50,7 @@ class OrdersController < ApplicationController
 
   def process_payment
     if @purchase_form.save
-      update_item_sold_status # 商品の `sold` フラグを更新
+      @item.create_order(user: current_user) # Orderを作成して商品を売却済みにする
       redirect_to root_path, notice: '商品の購入が完了しました。'
     else
       render :index
@@ -65,7 +63,4 @@ class OrdersController < ApplicationController
     render :index
   end
 
-  def update_item_sold_status
-    @item.update!(sold: true)
-  end
 end

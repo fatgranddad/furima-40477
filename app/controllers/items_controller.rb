@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   before_action :redirect_if_sold, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.all.order('created_at DESC')
+    @items = Item.includes(:order).order('created_at DESC')
   end
 
   def show
@@ -47,8 +47,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :image, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_from_id,
-                                 :shipping_days_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :image, :description, :category_id, :condition_id, :shipping_payer_id, :shipping_from_id, :shipping_days_id, :price).merge(user_id: current_user.id)
   end
 
   def redirect_unless_author
@@ -56,6 +55,6 @@ class ItemsController < ApplicationController
   end
 
   def redirect_if_sold
-    redirect_to root_path, alert: '売却済みの商品は編集または削除できません。' if @item.sold
+    redirect_to root_path, alert: '売却済みの商品は編集または削除できません。' if @item.order.present?
   end
 end
