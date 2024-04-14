@@ -1,6 +1,7 @@
 class PurchaseForm
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number, :card_token
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :city, :street_address, :building_name, :phone_number,
+                :card_token
 
   with_options presence: true do
     validates :user_id

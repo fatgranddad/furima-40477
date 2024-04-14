@@ -80,7 +80,7 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("User can't be blank")
       end
-      
+
       it '商品（item_id）が空だと購入できない' do
         @purchase_form.item_id = nil
         @purchase_form.valid?
