@@ -51,7 +51,6 @@ class OrdersController < ApplicationController
 
   def process_payment
     if @purchase_form.save
-      @item.create_order(user: current_user) # Orderを作成して商品を売却済みにする
       redirect_to root_path, notice: '商品の購入が完了しました。'
     else
       render :index
